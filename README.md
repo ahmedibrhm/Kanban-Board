@@ -49,14 +49,14 @@ The application is built using Flask, a Python web framework.
 └── test.db
 ```
 ### Folders
-    - template/
+- template/
 This folder contains the HTML templates used by the application for rendering views.
 
-        1. edit_task.html: This template is used to edit a task.
-        2. kanban.html: This template is used to render the main Kanban board view.
-        3. layout.html: This is the base template that all other templates inherit from.
-        4. login.html: This template is used to display the login form.
-        5. signup.html: This template is used to display the sign up form.
+1. edit_task.html: This template is used to edit a task.
+2. kanban.html: This template is used to render the main Kanban board view.
+3. layout.html: This is the base template that all other templates inherit from.
+4. login.html: This template is used to display the login form.
+5. signup.html: This template is used to display the sign up form.
 ### Files
 1. app.py
 This file contains the main code for the application, including the Flask app setup, database initialization, and route handlers.
