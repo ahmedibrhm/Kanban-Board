@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <div class="signup-container">
+    <h1>SignUp Page</h1>
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% endif %}
+    <form method="post" action="{{ url_for('signup') }}">
+      <label>Username:</label>
+      <input type="text" name="username" required>
+      <label>Password:</label>
+      <input type="password" name="password" required>
+      <input type="submit" value="Signup">
+    </form>
+  </div>
+{% endblock %}
+
+{% block styles %}
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      background-color: #edf2f7;
+    }
+    .signup-container {
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #2d3748;
+      text-shadow: 2px 2px #e2e8f0;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #2d3748;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: none;
+      background-color: #e2e8f0;
+      color: #2d3748;
+      max-width: 300px;
+      box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.1);
+    }
+    input[type="submit"] {
+      background-color: #2d3748;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #4a5568;
+    }
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+  </style>
+{% endblock %}

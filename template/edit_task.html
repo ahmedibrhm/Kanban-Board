@@ -1,0 +1,209 @@
+{% extends "layout.html" %}
+{% block head %}
+    <title>Edit Task</title>
+    {% endblock %}
+    {% block body %}
+    <h1>Edit Task</h1>
+    {% if error %}
+      <p class="error-message">{{ error }}</p>
+    {% endif %}
+
+    <div class="container">
+    
+
+    <div class="edit-task-container">
+    <h2> Move Task </h2>
+    <form action="/move_task" method="post" class="move_task">
+        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+        <select name="to_column">
+          <option value="none" selected disabled hidden>Select section</option>
+          <option value="todo">To Do</option>
+          <option value="doing">In Progress</option>
+          <option value="done">Done</option>
+        </select>
+        <input type="submit" value="Move Task">
+      </form>
+    </div>
+
+
+    <div class="edit-task-container">
+    <h2> Delete Task </h2>
+    <form action="/delete_task" method="post" class="delete_task">
+        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+        <input type="submit" value="Delete Task">
+    </form>
+    </div>
+
+    <div class="edit-task-container">
+    <h2> Edit Title and Description </h2>
+    <form action="/edit_text" method="post" class="edit_text">
+        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+        <label for="title">Title</label>
+        <input type="text" name="title" value="{{ task['title'] }}">
+        <label for="description">Description</label>
+        <input type="text" name="description" value="{{ task['description'] }}">
+        <input type="submit" value="Edit Task">
+    </form>
+    </div>
+
+
+    <div class="edit-task-container">
+    <h2> Remove Contributor</h2>
+    <form action="/remove_contributor" method="post" class="remove_contributor">
+        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+        <select name="username">
+          <option value="none" selected disabled hidden>Select contributor</option>
+          {% for contributor in task['contributors'] %}
+            <option value="{{ contributor[0] }}">{{ contributor[0] }}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" value="Remove Contributor">
+    </form>
+    </div>
+
+
+    <div class="edit-task-container">
+    <h2> Add Contributor</h2>
+    <form action="/add_contributor" method="post" class="add_contributor">
+        <input type="hidden" name="task_id" value="{{ task['id'] }}">
+        <input type="text" name="username" placeholder="Contributor username">
+        <input type="submit" value="Add Contributor">
+    </form>
+    </div>
+</div>
+<div class="main_bar">
+    <a href="/" class="btn-main">Home</a>
+    <a href="/logout" class="btn-main">Log Out</a>
+  </div>
+    {% endblock %}
+
+    {% block styles %}
+    <style>
+        h1 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0066CC;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+          }
+
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.4;
+          }
+    
+          .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+          }
+    
+          form {
+            /* Center the form on the page */
+            margin: 10 auto;
+            width: 400px;
+            /* Form outline */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+          }
+    
+          form input[type="text"],
+          form select {
+            display: block;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            background-color: #fff;
+          }
+    
+          form input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+          }
+    
+          form input[type="submit"]:hover {
+            background-color: #0069d9;
+          }
+    
+          a {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+            color: #007bff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+          }
+    
+          a:hover {
+            color: #0056b3;
+          }    
+          .error-message {
+            color: red;
+            margin-top: 10px;
+          }
+
+          .edit_task_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0 auto;
+            width: 400px;
+          }
+          h2{
+            text-align: center;}
+        
+
+        .main_bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            }
+        .btn-main {
+            margin: 20px;
+            display: block;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            padding: 10px;
+            background-color: #007bff;
+            border-radius: 5px;
+            width: 20%;
+            }
+            
+        .btn-main:hover {
+            background-color: #0056b3;
+            }
+      </style>
+    
+  {% endblock %}
+  
