@@ -1,6 +1,9 @@
 # Flask Kanban Board
 This is a Flask application for a Kanban board. It allows users to sign up, log in, and view their assigned tasks on a Kanban board.
 
+## Demo
+Watch application demo [here](https://www.loom.com/share/2512e9868e3b4c41b6193c873946f7c8).
+
 ## Installation
 To get the application running, follow these steps:
 
