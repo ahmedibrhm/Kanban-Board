@@ -8,8 +8,8 @@ To get the application running, follow these steps:
 2. Navigate to the project directory in the command prompt
 3. Create a Python virtual environment: python3 -m venv venv
 4. Activate the virtual environment:
-- On Windows: ```venv\Scripts\activate.bat```
-- On Mac: ```venv\Scripts\activate.bat```
+    - On Windows: ```venv\Scripts\activate.bat```
+    - On Mac: ```venv\Scripts\activate.bat```
 5. Install the required packages: ```pip3 install -r requirements.txt```
 6. Run the application ```python3 app.py```
 
